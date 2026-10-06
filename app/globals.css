@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body { height: 100%; background: #0a1628; color: #e6f6ff; }
+body { font-family: ui-rounded, "Segoe UI", system-ui, -apple-system, Roboto, sans-serif; }
+
+@layer components {
+  .glass { @apply backdrop-blur-lg bg-white/10 border border-white/15 rounded-2xl; }
+}
+
+@keyframes swim-r { from { transform: translateX(-15vw); } to { transform: translateX(115vw); } }
+@keyframes swim-l { from { transform: translateX(115vw) scaleX(-1); } to { transform: translateX(-15vw) scaleX(-1); } }
+@keyframes rise {
+  0% { transform: translate(0, 0); opacity: 0; }
+  10% { opacity: .7; }
+  100% { transform: translate(24px, -110vh); opacity: 0; }
+}
+.fish { position: absolute; left: 0; animation-timing-function: linear; animation-iteration-count: infinite; }
+.bubble {
+  position: absolute; bottom: -24px; border-radius: 9999px;
+  border: 1px solid rgba(0, 212, 255, .5); background: rgba(0, 212, 255, .12);
+  animation: rise linear infinite;
+}
+@media (prefers-reduced-motion: reduce) { .fish, .bubble { animation: none; } }
